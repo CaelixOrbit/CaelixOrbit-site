@@ -146,6 +146,25 @@
   overflow-y: auto;
   padding: 8px;
   scrollbar-width: thin;
+  scrollbar-color: rgba(118, 220, 255, 0.18) transparent;
+}
+
+/* Webkit 滚动条与暗色主题一致 */
+.category-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.category-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.category-panel::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(118, 220, 255, 0.18);
+}
+
+.category-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(118, 220, 255, 0.32);
 }
 
 .category-button {
