@@ -222,6 +222,16 @@ function normalizeTags(value) {
   return []
 }
 
+function renderInlineLatex(value) {
+  return value.replace(/\$([^$]+)\$/g, (_, formula) => {
+    try {
+      return katex.renderToString(formula.trim(), { output: 'htmlAndMathml', throwOnError: false, strict: 'warn', trust: false })
+    } catch {
+      return formula
+    }
+  })
+}
+
 function slugifyHeading(value, counts) {
   const base =
     value
@@ -398,7 +408,7 @@ function createMarkdownRenderer() {
     token.attrSet('id', id)
 
     if (depth >= 2 && depth <= 3) {
-      env.headings.push({ depth, text, id })
+      env.headings.push({ depth, text, html: renderInlineLatex(text), id })
     }
 
     return defaultHeadingOpen(tokens, idx, options, env, self)
@@ -501,6 +511,7 @@ async function build() {
     notes.push({
       slug,
       title,
+      titleHtml: renderInlineLatex(title),
       category,
       categoryPath,
       categoryPathLabel,

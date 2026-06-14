@@ -1,12 +1,14 @@
 export interface NoteHeading {
   depth: number
   text: string
+  html: string
   id: string
 }
 
 export interface NoteItem {
   slug: string
   title: string
+  titleHtml: string
   category: string
   categoryPath: string[]
   categoryPathLabel: string

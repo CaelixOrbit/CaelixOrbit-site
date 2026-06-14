@@ -16,6 +16,7 @@ interface CategoryOption {
   kind: 'category' | 'note'
   key: string
   label: string
+  labelHtml: string
   fullLabel: string
   depth: number
   count?: number
@@ -53,6 +54,7 @@ const categoryTree = computed(() => {
           kind: 'category',
           key,
           label,
+          labelHtml: label,
           fullLabel: pathSegments.join(' / '),
           depth: index + 1,
           count: 0,
@@ -83,6 +85,7 @@ const categoryTree = computed(() => {
         kind: 'note',
         key: noteKey,
         label: note.title,
+        labelHtml: note.titleHtml,
         fullLabel: notePathLabel,
         depth: segments.length + 1,
         children: [],
@@ -270,7 +273,7 @@ onMounted(async () => {
             @click="selectCategory(category)"
           >
             <span class="category-folder-icon" aria-hidden="true"></span>
-            <span class="category-label">{{ category.label }}</span>
+            <span class="category-label"><span v-html="category.labelHtml"></span></span>
             <span v-if="category.kind === 'category'" class="category-count">{{ category.count }}</span>
           </button>
         </div>
@@ -284,7 +287,7 @@ onMounted(async () => {
           class="category-panel-recent-item"
           :to="`/notes/${encodeNoteSlug(note.slug)}`"
         >
-          {{ note.title }}
+          <span v-html="note.titleHtml"></span>
         </RouterLink>
       </div>
 
@@ -310,7 +313,7 @@ onMounted(async () => {
           :to="`/notes/${encodeNoteSlug(note.slug)}`"
         >
           <span class="note-category">{{ note.category }}</span>
-          <h2>{{ note.title }}</h2>
+          <h2><span v-html="note.titleHtml"></span></h2>
           <span class="note-path">{{ formatNotePath(note) }}</span>
           <p>{{ note.summary }}</p>
           <time :datetime="note.updatedAt">{{ formatDate(note.updatedAt) }}</time>

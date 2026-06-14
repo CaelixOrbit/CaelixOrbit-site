@@ -300,7 +300,7 @@ onMounted(async () => {
         </RouterLink>
       </nav>
       <span class="note-category">{{ formatNotePath(note) }}</span>
-      <h1>{{ note.title }}</h1>
+      <h1 v-html="note.titleHtml"></h1>
       <div class="note-meta">
         <time :datetime="note.updatedAt">更新于 {{ formatDate(note.updatedAt) }}</time>
         <span>{{ note.sourceRelativePath }}</span>
@@ -318,9 +318,7 @@ onMounted(async () => {
       </div>
 
       <nav v-if="note.headings.length" class="toc" aria-label="文章目录">
-        <a v-for="heading in note.headings" :key="heading.id" :href="`#${heading.id}`" :class="`depth-${heading.depth}`">
-          {{ heading.text }}
-        </a>
+        <a v-for="heading in note.headings" :key="heading.id" :href="`#${heading.id}`" :class="`depth-${heading.depth}`" v-html="heading.html"></a>
       </nav>
     </div>
 
