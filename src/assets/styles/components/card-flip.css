@@ -22,7 +22,12 @@
   -webkit-backface-visibility: hidden;
 }
 
-.card-flip-back {
+.card-flip-inner .card-front {
+  position: absolute;
+  inset: 0;
+}
+
+.card-flip-inner .card-flip-back {
   position: absolute;
   inset: 0;
   transform: rotateY(180deg);
