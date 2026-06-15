@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "run-s submodule:update build dev:serve",
+    "dev:serve": "vite",
+    "submodule:update": "git submodule update --init --remote --recursive",
     "notes:build": "node src/scripts/build-notes.mjs",
     "build": "run-s notes:build build:app",
     "build:app": "run-p type-check build-only",
