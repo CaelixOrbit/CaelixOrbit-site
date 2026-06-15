@@ -7,7 +7,26 @@
 html {
   min-height: 100%;
   scrollbar-gutter: stable;
+  scrollbar-width: auto;
+  scrollbar-color: rgba(118, 220, 255, 0.18) transparent;
   background: var(--space-0);
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(118, 220, 255, 0.18);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(118, 220, 255, 0.32);
 }
 
 body {
