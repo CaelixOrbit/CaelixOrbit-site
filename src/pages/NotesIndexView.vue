@@ -241,7 +241,9 @@ const paginationLinks = computed<PageLink[]>(() => {
   return links
 })
 
-const recentNotes = computed(() => notes.value.slice(0, 4))
+const recentNotes = computed(() =>
+  [...notes.value].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).slice(0, 4),
+)
 
 async function setCategory(category: string) {
   await router.push({
