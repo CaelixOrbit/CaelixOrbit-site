@@ -58,6 +58,20 @@
   color: var(--gold);
 }
 
+.til-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
+  color: inherit;
+}
+
+.til-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 /* GitHub 链接（侧栏底部） */
 .category-panel-gh-link {
   display: flex;

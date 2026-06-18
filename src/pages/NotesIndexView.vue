@@ -2,6 +2,7 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import githubIcon from '@/assets/GitHub_Invertocat_Black.svg?raw'
 import type { NoteItem } from '@/types/notes'
 import {
   categoryPathKey,
@@ -340,7 +341,7 @@ onMounted(async () => {
   <section class="page-heading">
     <p class="eyebrow">Today-I-Learned</p>
     <h1>笔记</h1>
-    <p>内容来自 <a href="https://github.com/CaelixOrbit/Today-I-Learned" target="_blank" rel="noreferrer" class="til-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg><span style="margin-left:4px">Today-I-Learned</span></a>，随站点构建脚本自动发布为静态页面。</p>
+    <p>内容来自 <a href="https://github.com/CaelixOrbit/Today-I-Learned" target="_blank" rel="noreferrer" class="til-link"><span class="til-icon" v-html="githubIcon" aria-hidden="true"></span><span style="margin-left:4px">Today-I-Learned</span></a>，随站点构建脚本自动发布为静态页面。</p>
     <p>PS：说是 <del>Today-I-Learned</del>，实际上目前是在 <del>整理以前的笔记</del> _(:з」∠)_</p>
   </section>
 
@@ -413,9 +414,7 @@ onMounted(async () => {
       </div>
 
       <a class="category-panel-gh-link" href="https://github.com/CaelixOrbit/Today-I-Learned" target="_blank" rel="noreferrer">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
-        </svg>
+        <span class="til-icon" v-html="githubIcon" aria-hidden="true"></span>
         Today-I-Learned
       </a>
     </aside>
